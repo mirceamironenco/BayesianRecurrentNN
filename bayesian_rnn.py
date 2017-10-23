@@ -62,9 +62,7 @@ def get_bbb_variable(shape, name, prior, is_training, rho_min_init, rho_max_init
 	  shape: shape of variable
 	  name: string with variable name
 	  prior: belongs to class Prior
-	  kl: if True will compute(approx) kl between prior and current variable and
-		  add it to a collection called "KL_layers"
-	  reuse: either to reuse variable or not
+	  is_training: boolean flag indicating training/evaluation
 
 	Returns:
 	  output: sample from posterior Normal(mean, sigma)
@@ -214,6 +212,7 @@ class PTBModel(object):
 		# Construct prior
 		prior = Prior(config.prior_pi, config.log_sigma1, config.log_sigma2)
 
+		# Fetch embeddings
 		with tf.device("/cpu:0"):
 			emb_rho_min_init, emb_rho_max_init = prior.normal_init()
 			embedding = get_bbb_variable([vocab_size, size], 'embedding', prior, is_training,

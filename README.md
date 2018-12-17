@@ -8,7 +8,7 @@ Status: Basic model replicated.
 
 # Requirements
 - Python 3.5
-- [TensorFlow 1.3.0+](https://www.tensorflow.org/)
+- [TensorFlow 1.3.0](https://www.tensorflow.org/)
 
 # Usage
     $ sh download_ptb.sh
